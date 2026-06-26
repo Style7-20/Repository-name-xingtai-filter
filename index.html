@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>星泰五金制品有限公司 - 产品展示</title>
+<title>星泰五金制品有限公司</title>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -92,7 +92,6 @@ margin-bottom:40px;
 letter-spacing:1px;
 }
 
-/* 产品网格 */
 .product-grid{
 display:grid;
 grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
@@ -156,7 +155,6 @@ border-top:1px solid #f0ede8;
 padding-top:8px;
 }
 
-/* 弹窗 - 产品详情 */
 .modal{
 display:none;
 position:fixed;
@@ -337,7 +335,6 @@ letter-spacing:1px;
 </head>
 <body>
 
-<!-- 顶部导航 -->
 <header>
 <div class="nav">
 <div class="logo">XT <span>FILTER</span></div>
@@ -345,23 +342,17 @@ letter-spacing:1px;
 </div>
 </header>
 
-<!-- 首屏 -->
 <section class="hero">
 <h1>星泰五金制品 <strong>·</strong> 精密滤器</h1>
 <p>Xingtai Hardware Products Co., Ltd.<br>专业咖啡滤杯 · 茶滤器 · 不锈钢过滤器 · OEM定制</p>
 </section>
 
-<!-- 产品区 -->
 <section class="section">
 <h2 class="section-title">产品系列</h2>
 <p class="section-sub">PRODUCTS · 点击卡片查看详情</p>
-
-<div class="product-grid" id="productGrid">
-<!-- 产品由 JS 动态生成 -->
-</div>
+<div class="product-grid" id="productGrid"></div>
 </section>
 
-<!-- 关于我们 -->
 <section class="about-section">
 <div class="about-grid">
 <div>
@@ -377,7 +368,6 @@ letter-spacing:1px;
 </div>
 </section>
 
-<!-- 联系 -->
 <section class="contact-bar">
 <h3>📩 获取样品 &amp; 定制咨询</h3>
 <p>电话：<span class="highlight">15630168185</span> &nbsp;·&nbsp; 微信：<span class="highlight">15630168185</span> &nbsp;·&nbsp; 邮箱：<span class="highlight">3507465364@qq.com</span></p>
@@ -388,7 +378,6 @@ letter-spacing:1px;
 © 2025 星泰五金制品有限公司 Xingtai Hardware Products Co., Ltd.
 </footer>
 
-<!-- 弹窗 -->
 <div class="modal" id="modal">
 <div class="modal-content">
 <button class="modal-close" id="modalClose">✕</button>
@@ -397,22 +386,25 @@ letter-spacing:1px;
 </div>
 
 <script>
-// 产品数据（按你提供的图片命名）
+// 产品数据 - 匹配你仓库里所有的图片
 const products = [
+{ id:'XT-001', name:'产品型号', img:'IMG_2798.jpeg', desc:'不锈钢滤器 · 精致工艺', dims:'定制尺寸' },
+{ id:'XT-002', name:'产品型号', img:'IMG_2803.jpeg', desc:'不锈钢滤器 · 精致工艺', dims:'定制尺寸' },
+{ id:'XT-013', name:'102底盘款', img:'IMG_2805.jpeg', desc:'102mm口径 · 咖啡滤杯', dims:'124×102×83×65×89 mm' },
+{ id:'XT-011', name:'115大底支架款', img:'IMG_2807.jpeg', desc:'115mm口径 · 支架设计', dims:'132×115×85×100 mm' },
+{ id:'XT-015', name:'118口径大底漏斗', img:'IMG_2809.jpeg', desc:'大底设计 · 118mm口径', dims:'138×118×100×84×46 mm' },
+{ id:'XT-024', name:'单把手底盘款', img:'IMG_2816.jpeg', desc:'100mm口径 · 带底盘', dims:'100×90×74×105 mm' },
+{ id:'XT-026', name:'弯把手单层漏斗', img:'IMG_2818.jpeg', desc:'78mm口径 · 弯把手', dims:'99×78×69×56×8 mm' },
+{ id:'XT-016', name:'88口径底盘款', img:'IMG_2820.jpeg', desc:'88mm口径 · 带底盘', dims:'110×88×72×110×90 mm' },
+{ id:'XT-044', name:'电镀系列', img:'IMG_2821.jpeg', desc:'电镀工艺 · 精致表面', dims:'定制尺寸' },
+{ id:'XT-030', name:'口径81席型滤筒', img:'IMG_2824.jpeg', desc:'席型滤网 · 81mm口径', dims:'81×66×210×66 mm' },
+{ id:'XT-034', name:'双耳折叠漏斗', img:'IMG_2825.jpeg', desc:'口径63 · 折叠设计', dims:'129×66×73×13 mm' },
 { id:'XT-042', name:'茶滤', img:'IMG_2829.jpeg', desc:'不锈钢茶滤 · 精细过滤', dims:'64×52×100×40 mm' },
 { id:'XT-043', name:'咖啡滤筒', img:'IMG_2830.jpeg', desc:'咖啡滤筒 · 圆柱设计', dims:'99×78×128×79 mm' },
-{ id:'XT-036', name:'口径90胀型滤筒', img:'IMG_2827.jpeg', desc:'胀型滤筒 · 90mm口径', dims:'90×170×55 mm' },
-{ id:'XT-034', name:'双耳折叠漏斗', img:'IMG_2825.jpeg', desc:'口径63 · 折叠设计', dims:'129×66×73×13 mm' },
-{ id:'XT-030', name:'口径81席型滤筒', img:'IMG_2822.jpeg', desc:'席型滤网 · 81mm口径', dims:'81×66×210×66 mm' },
-{ id:'XT-026', name:'弯把手单层漏斗', img:'IMG_2818.jpeg', desc:'78mm口径 · 弯把手', dims:'99×78×69×56×8 mm' },
-{ id:'XT-024', name:'单把手底盘款', img:'IMG_2816.jpeg', desc:'100mm口径 · 带底盘', dims:'100×90×74×105 mm' },
-{ id:'XT-015', name:'118口径大底漏斗', img:'IMG_2809.jpeg', desc:'大底设计 · 118mm口径', dims:'138×118×100×84×46 mm' },
-{ id:'XT-016', name:'88口径底盘款', img:'IMG_2808.jpeg', desc:'88mm口径 · 带底盘', dims:'110×88×72×110×90 mm' },
-{ id:'XT-013', name:'102底盘款', img:'IMG_2805.jpeg', desc:'102mm口径 · 咖啡滤杯', dims:'124×102×83×65×89 mm' },
-{ id:'XT-011', name:'115大底支架款', img:'IMG_2801.jpeg', desc:'115mm口径 · 支架设计', dims:'132×115×85×100 mm' }
+{ id:'XT-036', name:'口径90胀型滤筒', img:'IMG_2831.jpeg', desc:'胀型滤筒 · 90mm口径', dims:'90×170×55 mm' },
+{ id:'XT-045', name:'新款滤器', img:'IMG_2833.jpeg', desc:'创新设计 · 实用美观', dims:'定制尺寸' }
 ];
 
-// 渲染产品卡片
 const grid = document.getElementById('productGrid');
 
 products.forEach(p => {
@@ -431,7 +423,6 @@ card.addEventListener('click', () => openModal(p));
 grid.appendChild(card);
 });
 
-// 弹窗
 const modal = document.getElementById('modal');
 const modalBody = document.getElementById('modalBody');
 const modalClose = document.getElementById('modalClose');
