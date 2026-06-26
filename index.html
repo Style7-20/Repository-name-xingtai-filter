@@ -7,6 +7,7 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
 font-family:'Helvetica Neue',Arial,sans-serif;
 background:#f8f6f3;
@@ -17,7 +18,7 @@ line-height:1.6;
 header{
 background:#1a1a1a;
 color:white;
-padding:18px 30px;
+padding:15px 20px;
 position:sticky;
 top:0;
 z-index:999;
@@ -30,7 +31,7 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 flex-wrap:wrap;
-gap:10px;
+gap:8px;
 }
 
 .logo{
@@ -38,18 +39,20 @@ font-size:22px;
 font-weight:700;
 letter-spacing:2px;
 }
-
 .logo span{color:#c9a84c;}
 
 .contact-info{
-font-size:14px;
+font-size:13px;
 color:#ccc;
+display:flex;
+gap:15px;
+flex-wrap:wrap;
 }
 
 .hero{
 background:linear-gradient(135deg,#1a1a1a 0%,#2d2d2d 100%);
 color:white;
-padding:70px 20px 50px;
+padding:70px 20px 55px;
 text-align:center;
 }
 
@@ -59,7 +62,6 @@ font-weight:300;
 letter-spacing:4px;
 margin-bottom:10px;
 }
-
 .hero h1 strong{color:#c9a84c;font-weight:600;}
 
 .hero p{
@@ -68,6 +70,24 @@ color:#bbb;
 max-width:700px;
 margin:10px auto 0;
 letter-spacing:1px;
+}
+
+.btn-hero{
+display:inline-block;
+margin-top:25px;
+padding:14px 40px;
+background:#c9a84c;
+color:#1a1a1a;
+text-decoration:none;
+border-radius:30px;
+font-weight:600;
+letter-spacing:2px;
+transition:background 0.3s,transform 0.2s;
+font-size:15px;
+}
+.btn-hero:hover{
+background:#dbb95c;
+transform:scale(1.03);
 }
 
 .section{
@@ -81,33 +101,31 @@ font-size:28px;
 font-weight:300;
 letter-spacing:3px;
 text-align:center;
-margin-bottom:10px;
+margin-bottom:8px;
 }
-
 .section-sub{
 text-align:center;
 color:#888;
 font-size:14px;
-margin-bottom:40px;
+margin-bottom:35px;
 letter-spacing:1px;
 }
 
 .product-grid{
 display:grid;
-grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
-gap:30px;
+grid-template-columns:repeat(auto-fill,minmax(270px,1fr));
+gap:25px;
 }
 
 .product-card{
 background:white;
 border-radius:16px;
 overflow:hidden;
-box-shadow:0 2px 20px rgba(0,0,0,0.06);
+box-shadow:0 2px 16px rgba(0,0,0,0.06);
 transition:transform 0.3s,box-shadow 0.3s;
 cursor:pointer;
 border:1px solid #eee;
 }
-
 .product-card:hover{
 transform:translateY(-6px);
 box-shadow:0 12px 40px rgba(0,0,0,0.10);
@@ -115,137 +133,37 @@ box-shadow:0 12px 40px rgba(0,0,0,0.10);
 
 .product-card img{
 width:100%;
-height:240px;
+height:210px;
 object-fit:contain;
 background:#fafafa;
-padding:15px;
+padding:12px;
 display:block;
 }
 
 .product-info{
-padding:18px 20px 22px;
+padding:14px 18px 18px;
 }
-
-.product-info h3{
-font-size:18px;
-font-weight:600;
-letter-spacing:1px;
-margin-bottom:4px;
-}
-
 .product-info .model{
 color:#c9a84c;
 font-size:13px;
 font-weight:600;
-letter-spacing:1px;
+letter-spacing:0.5px;
 }
-
+.product-info h3{
+font-size:17px;
+font-weight:600;
+margin:2px 0 4px;
+}
 .product-info .desc{
 color:#666;
-font-size:14px;
-margin-top:6px;
+font-size:13px;
 }
-
-.product-info .dimensions{
+.product-info .dims{
 color:#999;
 font-size:12px;
-margin-top:8px;
-letter-spacing:0.5px;
+margin-top:6px;
+padding-top:6px;
 border-top:1px solid #f0ede8;
-padding-top:8px;
-}
-
-.modal{
-display:none;
-position:fixed;
-top:0;left:0;right:0;bottom:0;
-background:rgba(0,0,0,0.7);
-z-index:9999;
-justify-content:center;
-align-items:center;
-padding:20px;
-backdrop-filter:blur(4px);
-}
-
-.modal.show{display:flex;}
-
-.modal-content{
-background:white;
-border-radius:20px;
-max-width:700px;
-width:100%;
-max-height:90vh;
-overflow-y:auto;
-padding:30px;
-position:relative;
-animation:fadeIn 0.3s;
-}
-
-@keyframes fadeIn{
-from{opacity:0;transform:scale(0.95);}
-to{opacity:1;transform:scale(1);}
-}
-
-.modal-close{
-position:absolute;
-top:15px;right:20px;
-font-size:28px;
-background:none;
-border:none;
-cursor:pointer;
-color:#999;
-transition:color 0.2s;
-}
-
-.modal-close:hover{color:#333;}
-
-.modal img{
-width:100%;
-max-height:350px;
-object-fit:contain;
-background:#fafafa;
-border-radius:12px;
-padding:10px;
-}
-
-.modal .info{
-margin-top:20px;
-}
-
-.modal .info h2{
-font-size:24px;
-font-weight:600;
-}
-
-.modal .info .model{
-color:#c9a84c;
-font-size:14px;
-font-weight:600;
-letter-spacing:1px;
-}
-
-.modal .info .desc{
-color:#555;
-margin-top:8px;
-line-height:1.8;
-}
-
-.modal .info .dims{
-margin-top:12px;
-background:#f8f6f3;
-padding:14px 18px;
-border-radius:10px;
-font-size:14px;
-color:#444;
-}
-
-.modal .info .dims span{
-display:inline-block;
-background:white;
-padding:2px 12px;
-border-radius:4px;
-margin:3px 4px 3px 0;
-font-weight:500;
 }
 
 .about-section{
@@ -254,7 +172,6 @@ padding:50px 20px;
 border-top:1px solid #eee;
 border-bottom:1px solid #eee;
 }
-
 .about-grid{
 max-width:1400px;
 margin:auto;
@@ -263,32 +180,54 @@ grid-template-columns:1fr 1fr;
 gap:40px;
 align-items:center;
 }
-
 .about-grid h2{
 font-size:28px;
 font-weight:300;
 letter-spacing:2px;
 }
-
 .about-grid h2 strong{color:#c9a84c;font-weight:600;}
-
 .about-grid p{
-color:#666;
+color:#555;
 line-height:1.9;
-margin-top:10px;
+margin-top:8px;
 font-size:15px;
 }
-
-.about-grid .badge{
-display:inline-block;
+.badge-group{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+margin-top:14px;
+}
+.badge{
 background:#1a1a1a;
 color:white;
-padding:4px 16px;
+padding:5px 16px;
 border-radius:20px;
 font-size:12px;
-letter-spacing:1px;
-margin-top:12px;
+letter-spacing:0.5px;
 }
+
+.services-section{
+background:#f8f6f3;
+padding:40px 20px 50px;
+}
+.services-grid{
+max-width:1400px;
+margin:auto;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
+text-align:center;
+}
+.service-item{
+background:white;
+padding:25px 15px;
+border-radius:12px;
+border:1px solid #eee;
+}
+.service-item .icon{font-size:32px;display:block;margin-bottom:6px;}
+.service-item h4{font-size:15px;font-weight:600;}
+.service-item p{font-size:13px;color:#888;margin-top:4px;}
 
 .contact-bar{
 background:#1a1a1a;
@@ -296,20 +235,17 @@ color:white;
 padding:40px 20px;
 text-align:center;
 }
-
 .contact-bar h3{
 font-weight:300;
 letter-spacing:2px;
 font-size:22px;
 }
-
 .contact-bar p{
 color:#aaa;
-margin-top:12px;
+margin-top:10px;
 font-size:14px;
 letter-spacing:1px;
 }
-
 .contact-bar .highlight{
 color:#c9a84c;
 font-weight:600;
@@ -323,13 +259,134 @@ padding:25px;
 font-size:13px;
 letter-spacing:1px;
 }
+.footer-links{
+display:flex;
+justify-content:center;
+gap:25px;
+margin-bottom:12px;
+flex-wrap:wrap;
+}
+.footer-links a{
+color:#777;
+text-decoration:none;
+font-size:13px;
+transition:color 0.2s;
+}
+.footer-links a:hover{color:#c9a84c;}
+
+.modal{
+display:none;
+position:fixed;
+top:0;left:0;right:0;bottom:0;
+background:rgba(0,0,0,0.7);
+z-index:9999;
+justify-content:center;
+align-items:center;
+padding:20px;
+backdrop-filter:blur(4px);
+}
+.modal.show{display:flex;}
+.modal-content{
+background:white;
+border-radius:20px;
+max-width:650px;
+width:100%;
+max-height:90vh;
+overflow-y:auto;
+padding:28px;
+position:relative;
+animation:fadeIn 0.3s;
+}
+@keyframes fadeIn{
+from{opacity:0;transform:scale(0.95);}
+to{opacity:1;transform:scale(1);}
+}
+.modal-close{
+position:absolute;
+top:12px;right:18px;
+font-size:26px;
+background:none;
+border:none;
+cursor:pointer;
+color:#999;
+}
+.modal-close:hover{color:#333;}
+.modal img{
+width:100%;
+max-height:300px;
+object-fit:contain;
+background:#fafafa;
+border-radius:12px;
+padding:8px;
+}
+.modal .info{margin-top:16px;}
+.modal .info h2{font-size:22px;font-weight:600;}
+.modal .info .model{color:#c9a84c;font-size:14px;font-weight:600;}
+.modal .info .desc{color:#555;margin-top:6px;}
+.modal .info .dims{
+margin-top:12px;
+background:#f8f6f3;
+padding:12px 16px;
+border-radius:8px;
+font-size:14px;
+color:#444;
+}
+
+/* 浮动咨询按钮 */
+.float-btn{
+position:fixed;
+bottom:25px;
+right:20px;
+z-index:9998;
+display:flex;
+flex-direction:column;
+gap:10px;
+}
+.float-btn a{
+display:flex;
+align-items:center;
+justify-content:center;
+width:56px;
+height:56px;
+border-radius:50%;
+color:white;
+text-decoration:none;
+font-size:22px;
+box-shadow:0 4px 16px rgba(0,0,0,0.25);
+transition:transform 0.2s;
+}
+.float-btn a:hover{transform:scale(1.08);}
+.float-btn .phone{background:#25D366;}
+.float-btn .wechat{background:#07C160;}
+.float-btn .gotop{
+background:#c9a84c;
+font-size:18px;
+font-weight:700;
+}
 
 @media(max-width:768px){
 .hero h1{font-size:24px;}
-.product-grid{grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;}
-.product-card img{height:170px;}
+.hero{padding:50px 16px 40px;}
+.product-grid{grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:12px;}
+.product-card img{height:140px;}
+.product-info{padding:10px 12px 14px;}
+.product-info h3{font-size:14px;}
+.product-info .model{font-size:11px;}
+.product-info .desc{font-size:12px;}
+.product-info .dims{font-size:10px;}
 .about-grid{grid-template-columns:1fr;gap:20px;}
-.modal-content{padding:20px;margin:10px;}
+.section{padding:30px 12px 40px;}
+.section-title{font-size:22px;}
+.services-grid{grid-template-columns:repeat(2,1fr);gap:12px;}
+.contact-info{font-size:11px;gap:8px;}
+.float-btn a{width:48px;height:48px;font-size:18px;}
+.footer-links{gap:14px;}
+.modal-content{padding:16px;margin:10px;}
+}
+
+@media(max-width:480px){
+.product-grid{grid-template-columns:repeat(2,1fr);gap:10px;}
+.product-card img{height:120px;}
 }
 </style>
 </head>
@@ -338,46 +395,93 @@ letter-spacing:1px;
 <header>
 <div class="nav">
 <div class="logo">XT <span>FILTER</span></div>
-<div class="contact-info">📞 15630168185 &nbsp;|&nbsp; ✉ 3507465364@qq.com</div>
+<div class="contact-info">
+<span>📞 15630168185</span>
+<span>✉ 3507465364@qq.com</span>
+</div>
 </div>
 </header>
 
+<!-- 首屏 -->
 <section class="hero">
 <h1>星泰五金制品 <strong>·</strong> 精密滤器</h1>
-<p>Xingtai Hardware Products Co., Ltd.<br>专业咖啡滤杯 · 茶滤器 · 不锈钢过滤器 · OEM定制</p>
+<p>Xingtai Hardware Products Co., Ltd.</p>
+<p style="font-size:15px;margin-top:4px;color:#aaa;">专业咖啡滤杯 · 茶滤器 · 不锈钢过滤器 · OEM定制</p>
+<a href="#products" class="btn-hero">↓ 查看产品</a>
 </section>
 
-<section class="section">
+<!-- 产品区 -->
+<section class="section" id="products">
 <h2 class="section-title">产品系列</h2>
 <p class="section-sub">PRODUCTS · 点击卡片查看详情</p>
 <div class="product-grid" id="productGrid"></div>
 </section>
 
-<section class="about-section">
+<!-- 服务承诺 -->
+<section class="services-section">
+<div class="services-grid">
+<div class="service-item">
+<span class="icon">🔧</span>
+<h4>免费打样</h4>
+<p>支持样品定制测试</p>
+</div>
+<div class="service-item">
+<span class="icon">⚡</span>
+<h4>7天交货</h4>
+<p>快速响应 · 准时交付</p>
+</div>
+<div class="service-item">
+<span class="icon">🏷️</span>
+<h4>OEM/ODM</h4>
+<p>LOGO · 包装 · 颜色定制</p>
+</div>
+<div class="service-item">
+<span class="icon">✅</span>
+<h4>品质保障</h4>
+<p>不锈钢材质 · 精密工艺</p>
+</div>
+</div>
+</section>
+
+<!-- 关于我们 -->
+<section class="about-section" id="about">
 <div class="about-grid">
 <div>
 <h2>关于 <strong>星泰</strong></h2>
 <p>星泰五金制品有限公司位于河北沧州，是一家专业从事不锈钢滤器研发、生产和销售的企业。</p>
 <p>主营产品包括咖啡滤杯、茶滤器、折叠漏斗、滤筒等，广泛应用于咖啡器具、茶具及工业过滤领域。我们支持 OEM/ODM 定制，从 LOGO 到包装一站式服务。</p>
-<span class="badge">✓ 支持定制 · 品质保障</span>
+<div class="badge-group">
+<span class="badge">✓ 支持定制</span>
+<span class="badge">✓ 品质保障</span>
+<span class="badge">✓ 厂家直销</span>
 </div>
-<div style="background:#f0ede8;border-radius:16px;padding:40px;text-align:center;min-height:180px;display:flex;flex-direction:column;justify-content:center;">
-<div style="font-size:48px;font-weight:300;color:#c9a84c;letter-spacing:6px;">XT</div>
-<div style="color:#888;font-size:13px;letter-spacing:3px;margin-top:8px;">SINCE 2015</div>
+</div>
+<div style="background:#f0ede8;border-radius:16px;padding:40px;text-align:center;min-height:160px;display:flex;flex-direction:column;justify-content:center;">
+<div style="font-size:44px;font-weight:300;color:#c9a84c;letter-spacing:6px;">XT</div>
+<div style="color:#888;font-size:13px;letter-spacing:3px;margin-top:6px;">SINCE 2015</div>
 </div>
 </div>
 </section>
 
-<section class="contact-bar">
+<!-- 联系我们 -->
+<section class="contact-bar" id="contact">
 <h3>📩 获取样品 &amp; 定制咨询</h3>
 <p>电话：<span class="highlight">15630168185</span> &nbsp;·&nbsp; 微信：<span class="highlight">15630168185</span> &nbsp;·&nbsp; 邮箱：<span class="highlight">3507465364@qq.com</span></p>
 <p style="font-size:12px;color:#666;margin-top:6px;">河北沧州 · 欢迎来厂考察</p>
 </section>
 
+<!-- 底部 -->
 <footer>
+<div class="footer-links">
+<a href="#">首页</a>
+<a href="#products">产品系列</a>
+<a href="#about">关于我们</a>
+<a href="#contact">联系定制</a>
+</div>
 © 2025 星泰五金制品有限公司 Xingtai Hardware Products Co., Ltd.
 </footer>
 
+<!-- 弹窗 -->
 <div class="modal" id="modal">
 <div class="modal-content">
 <button class="modal-close" id="modalClose">✕</button>
@@ -385,11 +489,18 @@ letter-spacing:1px;
 </div>
 </div>
 
+<!-- 浮动按钮 -->
+<div class="float-btn">
+<a class="phone" href="tel:15630168185" title="拨打电话">📞</a>
+<a class="wechat" href="weixin://" title="复制微信号" onclick="navigator.clipboard.writeText('15630168185');alert('微信号已复制：15630168185')">💬</a>
+<a class="gotop" href="#" title="回到顶部">↑</a>
+</div>
+
 <script>
-// 产品数据 - 匹配你仓库里所有的图片
+// 产品数据 - 匹配你所有图片
 const products = [
-{ id:'XT-001', name:'产品型号', img:'IMG_2798.jpeg', desc:'不锈钢滤器 · 精致工艺', dims:'定制尺寸' },
-{ id:'XT-002', name:'产品型号', img:'IMG_2803.jpeg', desc:'不锈钢滤器 · 精致工艺', dims:'定制尺寸' },
+{ id:'XT-006', name:'125叶脉玫瑰金', img:'IMG_2798.jpeg', desc:'玫瑰金表面 · 叶脉纹理', dims:'定制尺寸' },
+{ id:'XT-001', name:'经典款滤器', img:'IMG_2803.jpeg', desc:'不锈钢滤器 · 精致工艺', dims:'定制尺寸' },
 { id:'XT-013', name:'102底盘款', img:'IMG_2805.jpeg', desc:'102mm口径 · 咖啡滤杯', dims:'124×102×83×65×89 mm' },
 { id:'XT-011', name:'115大底支架款', img:'IMG_2807.jpeg', desc:'115mm口径 · 支架设计', dims:'132×115×85×100 mm' },
 { id:'XT-015', name:'118口径大底漏斗', img:'IMG_2809.jpeg', desc:'大底设计 · 118mm口径', dims:'138×118×100×84×46 mm' },
@@ -416,7 +527,7 @@ card.innerHTML = `
 <div class="model">${p.id}</div>
 <h3>${p.name}</h3>
 <div class="desc">${p.desc}</div>
-<div class="dimensions">📐 ${p.dims}</div>
+<div class="dims">📐 ${p.dims}</div>
 </div>
 `;
 card.addEventListener('click', () => openModal(p));
@@ -447,11 +558,9 @@ function closeModal() {
 modal.classList.remove('show');
 document.body.style.overflow = 'auto';
 }
-
 modalClose.addEventListener('click', closeModal);
 modal.addEventListener('click', (e) => { if(e.target === modal) closeModal(); });
 document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeModal(); });
 </script>
-
 </body>
 </html>
