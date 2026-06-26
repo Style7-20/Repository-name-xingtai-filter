@@ -3,240 +3,464 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>星泰五金制品有限公司</title>
+<title>星泰五金制品有限公司 - 产品展示</title>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{
-font-family:Arial,sans-serif;
-background:#f5f5f5;
-color:#333;
+font-family:'Helvetica Neue',Arial,sans-serif;
+background:#f8f6f3;
+color:#1a1a1a;
 line-height:1.6;
 }
 
 header{
-background:#111;
+background:#1a1a1a;
 color:white;
-padding:15px;
+padding:18px 30px;
 position:sticky;
 top:0;
 z-index:999;
 }
 
 .nav{
-max-width:1200px;
+max-width:1400px;
 margin:auto;
 display:flex;
 justify-content:space-between;
 align-items:center;
+flex-wrap:wrap;
+gap:10px;
 }
 
 .logo{
-font-size:24px;
-font-weight:bold;
+font-size:22px;
+font-weight:700;
+letter-spacing:2px;
+}
+
+.logo span{color:#c9a84c;}
+
+.contact-info{
+font-size:14px;
+color:#ccc;
 }
 
 .hero{
-background:#222;
+background:linear-gradient(135deg,#1a1a1a 0%,#2d2d2d 100%);
 color:white;
-padding:80px 20px;
+padding:70px 20px 50px;
 text-align:center;
 }
 
 .hero h1{
-font-size:40px;
-margin-bottom:15px;
-}
-
-.hero p{
-font-size:18px;
-max-width:800px;
-margin:auto;
-}
-
-.btn{
-display:inline-block;
-margin-top:25px;
-padding:12px 30px;
-background:#c79a3b;
-color:white;
-text-decoration:none;
-border-radius:5px;
-}
-
-.section{
-padding:60px 20px;
-max-width:1200px;
-margin:auto;
-}
-
-.title{
-text-align:center;
-font-size:32px;
-margin-bottom:40px;
-}
-
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-}
-
-.card{
-background:white;
-border-radius:12px;
-padding:20px;
-box-shadow:0 4px 12px rgba(0,0,0,.08);
-}
-
-.card h3{
+font-size:36px;
+font-weight:300;
+letter-spacing:4px;
 margin-bottom:10px;
 }
 
-.contact{
-background:#111;
-color:white;
+.hero h1 strong{color:#c9a84c;font-weight:600;}
+
+.hero p{
+font-size:16px;
+color:#bbb;
+max-width:700px;
+margin:10px auto 0;
+letter-spacing:1px;
+}
+
+.section{
+padding:50px 20px 60px;
+max-width:1400px;
+margin:auto;
+}
+
+.section-title{
+font-size:28px;
+font-weight:300;
+letter-spacing:3px;
 text-align:center;
-padding:60px 20px;
+margin-bottom:10px;
+}
+
+.section-sub{
+text-align:center;
+color:#888;
+font-size:14px;
+margin-bottom:40px;
+letter-spacing:1px;
+}
+
+/* 产品网格 */
+.product-grid{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+gap:30px;
+}
+
+.product-card{
+background:white;
+border-radius:16px;
+overflow:hidden;
+box-shadow:0 2px 20px rgba(0,0,0,0.06);
+transition:transform 0.3s,box-shadow 0.3s;
+cursor:pointer;
+border:1px solid #eee;
+}
+
+.product-card:hover{
+transform:translateY(-6px);
+box-shadow:0 12px 40px rgba(0,0,0,0.10);
+}
+
+.product-card img{
+width:100%;
+height:240px;
+object-fit:contain;
+background:#fafafa;
+padding:15px;
+display:block;
+}
+
+.product-info{
+padding:18px 20px 22px;
+}
+
+.product-info h3{
+font-size:18px;
+font-weight:600;
+letter-spacing:1px;
+margin-bottom:4px;
+}
+
+.product-info .model{
+color:#c9a84c;
+font-size:13px;
+font-weight:600;
+letter-spacing:1px;
+}
+
+.product-info .desc{
+color:#666;
+font-size:14px;
+margin-top:6px;
+}
+
+.product-info .dimensions{
+color:#999;
+font-size:12px;
+margin-top:8px;
+letter-spacing:0.5px;
+border-top:1px solid #f0ede8;
+padding-top:8px;
+}
+
+/* 弹窗 - 产品详情 */
+.modal{
+display:none;
+position:fixed;
+top:0;left:0;right:0;bottom:0;
+background:rgba(0,0,0,0.7);
+z-index:9999;
+justify-content:center;
+align-items:center;
+padding:20px;
+backdrop-filter:blur(4px);
+}
+
+.modal.show{display:flex;}
+
+.modal-content{
+background:white;
+border-radius:20px;
+max-width:700px;
+width:100%;
+max-height:90vh;
+overflow-y:auto;
+padding:30px;
+position:relative;
+animation:fadeIn 0.3s;
+}
+
+@keyframes fadeIn{
+from{opacity:0;transform:scale(0.95);}
+to{opacity:1;transform:scale(1);}
+}
+
+.modal-close{
+position:absolute;
+top:15px;right:20px;
+font-size:28px;
+background:none;
+border:none;
+cursor:pointer;
+color:#999;
+transition:color 0.2s;
+}
+
+.modal-close:hover{color:#333;}
+
+.modal img{
+width:100%;
+max-height:350px;
+object-fit:contain;
+background:#fafafa;
+border-radius:12px;
+padding:10px;
+}
+
+.modal .info{
+margin-top:20px;
+}
+
+.modal .info h2{
+font-size:24px;
+font-weight:600;
+}
+
+.modal .info .model{
+color:#c9a84c;
+font-size:14px;
+font-weight:600;
+letter-spacing:1px;
+}
+
+.modal .info .desc{
+color:#555;
+margin-top:8px;
+line-height:1.8;
+}
+
+.modal .info .dims{
+margin-top:12px;
+background:#f8f6f3;
+padding:14px 18px;
+border-radius:10px;
+font-size:14px;
+color:#444;
+}
+
+.modal .info .dims span{
+display:inline-block;
+background:white;
+padding:2px 12px;
+border-radius:4px;
+margin:3px 4px 3px 0;
+font-weight:500;
+}
+
+.about-section{
+background:white;
+padding:50px 20px;
+border-top:1px solid #eee;
+border-bottom:1px solid #eee;
+}
+
+.about-grid{
+max-width:1400px;
+margin:auto;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+align-items:center;
+}
+
+.about-grid h2{
+font-size:28px;
+font-weight:300;
+letter-spacing:2px;
+}
+
+.about-grid h2 strong{color:#c9a84c;font-weight:600;}
+
+.about-grid p{
+color:#666;
+line-height:1.9;
+margin-top:10px;
+font-size:15px;
+}
+
+.about-grid .badge{
+display:inline-block;
+background:#1a1a1a;
+color:white;
+padding:4px 16px;
+border-radius:20px;
+font-size:12px;
+letter-spacing:1px;
+margin-top:12px;
+}
+
+.contact-bar{
+background:#1a1a1a;
+color:white;
+padding:40px 20px;
+text-align:center;
+}
+
+.contact-bar h3{
+font-weight:300;
+letter-spacing:2px;
+font-size:22px;
+}
+
+.contact-bar p{
+color:#aaa;
+margin-top:12px;
+font-size:14px;
+letter-spacing:1px;
+}
+
+.contact-bar .highlight{
+color:#c9a84c;
+font-weight:600;
 }
 
 footer{
-background:black;
-color:#aaa;
+background:#0d0d0d;
+color:#555;
 text-align:center;
-padding:20px;
+padding:25px;
+font-size:13px;
+letter-spacing:1px;
 }
 
 @media(max-width:768px){
-.hero h1{
-font-size:28px;
-}
+.hero h1{font-size:24px;}
+.product-grid{grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;}
+.product-card img{height:170px;}
+.about-grid{grid-template-columns:1fr;gap:20px;}
+.modal-content{padding:20px;margin:10px;}
 }
 </style>
 </head>
-
 <body>
 
+<!-- 顶部导航 -->
 <header>
 <div class="nav">
-<div class="logo">XT FILTER</div>
-<div>☎ 15630168185</div>
+<div class="logo">XT <span>FILTER</span></div>
+<div class="contact-info">📞 15630168185 &nbsp;|&nbsp; ✉ 3507465364@qq.com</div>
 </div>
 </header>
 
+<!-- 首屏 -->
 <section class="hero">
-<h1>星泰五金制品有限公司</h1>
-<p>
-Xingtai Hardware Products Co., Ltd.
-</p >
-
-<p style="margin-top:15px;">
-Professional Coffee Filter & Tea Filter Manufacturer
-</p >
-
-<a class="btn" href=" ">查看产品 Products</a >
+<h1>星泰五金制品 <strong>·</strong> 精密滤器</h1>
+<p>Xingtai Hardware Products Co., Ltd.<br>专业咖啡滤杯 · 茶滤器 · 不锈钢过滤器 · OEM定制</p>
 </section>
 
+<!-- 产品区 -->
 <section class="section">
-<h2 class="title">关于我们 About Us</h2>
+<h2 class="section-title">产品系列</h2>
+<p class="section-sub">PRODUCTS · 点击卡片查看详情</p>
 
-<div class="card">
-<p>
-星泰五金制品有限公司位于河北沧州，
-专注于咖啡滤杯、茶滤器、不锈钢过滤器及OEM定制产品生产。
-</p >
-
-<br>
-
-<p>
-Xingtai Hardware Products Co., Ltd. is a professional manufacturer located in Cangzhou, Hebei, China.
-We specialize in coffee filters, tea infusers, metal mesh filters and OEM projects.
-</p >
+<div class="product-grid" id="productGrid">
+<!-- 产品由 JS 动态生成 -->
 </div>
 </section>
 
-<section class="section" id="products">
-
-<h2 class="title">产品中心 Products</h2>
-
-<div class="grid">
-
-<div class="card">
-<h3>XT-009</h3>
-<p>Honeycomb Titanium Coffee Filter</p >
+<!-- 关于我们 -->
+<section class="about-section">
+<div class="about-grid">
+<div>
+<h2>关于 <strong>星泰</strong></h2>
+<p>星泰五金制品有限公司位于河北沧州，是一家专业从事不锈钢滤器研发、生产和销售的企业。</p>
+<p>主营产品包括咖啡滤杯、茶滤器、折叠漏斗、滤筒等，广泛应用于咖啡器具、茶具及工业过滤领域。我们支持 OEM/ODM 定制，从 LOGO 到包装一站式服务。</p>
+<span class="badge">✓ 支持定制 · 品质保障</span>
 </div>
-
-<div class="card">
-<h3>XT-013</h3>
-<p>Coffee Dripper With Base</p >
+<div style="background:#f0ede8;border-radius:16px;padding:40px;text-align:center;min-height:180px;display:flex;flex-direction:column;justify-content:center;">
+<div style="font-size:48px;font-weight:300;color:#c9a84c;letter-spacing:6px;">XT</div>
+<div style="color:#888;font-size:13px;letter-spacing:3px;margin-top:8px;">SINCE 2015</div>
 </div>
-
-<div class="card">
-<h3>XT-030</h3>
-<p>Tea Filter</p >
 </div>
-
-<div class="card">
-<h3>XT-034</h3>
-<p>Foldable Funnel</p >
-</div>
-
-<div class="card">
-<h3>XT-042</h3>
-<p>Tea Infuser Series</p >
-</div>
-
-<div class="card">
-<h3>XT-044</h3>
-<p>Electroplated Collection</p >
-</div>
-
-</div>
-
 </section>
 
-<section class="section">
-
-<h2 class="title">OEM / ODM Service</h2>
-
-<div class="grid">
-
-<div class="card">
-<h3>Logo Customization</h3>
-<p>支持激光雕刻LOGO</p >
-</div>
-
-<div class="card">
-<h3>Package Customization</h3>
-<p>支持包装盒定制</p >
-</div>
-
-<div class="card">
-<h3>Color Customization</h3>
-<p>支持金色、黑色、银色等定制</p >
-</div>
-
-</div>
-
-</section>
-
-<section class="contact">
-
-<h2>Contact Us</h2>
-
-<p>Phone：15630168185</p >
-
-<p>WeChat：15630168185</p >
-
-<p>Email：3507465364@qq.com</p >
-
-<p>Cangzhou, Hebei, China</p >
-
+<!-- 联系 -->
+<section class="contact-bar">
+<h3>📩 获取样品 &amp; 定制咨询</h3>
+<p>电话：<span class="highlight">15630168185</span> &nbsp;·&nbsp; 微信：<span class="highlight">15630168185</span> &nbsp;·&nbsp; 邮箱：<span class="highlight">3507465364@qq.com</span></p>
+<p style="font-size:12px;color:#666;margin-top:6px;">河北沧州 · 欢迎来厂考察</p>
 </section>
 
 <footer>
-© 2025 Xingtai Hardware Products Co., Ltd.
+© 2025 星泰五金制品有限公司 Xingtai Hardware Products Co., Ltd.
 </footer>
+
+<!-- 弹窗 -->
+<div class="modal" id="modal">
+<div class="modal-content">
+<button class="modal-close" id="modalClose">✕</button>
+<div id="modalBody"></div>
+</div>
+</div>
+
+<script>
+// 产品数据（按你提供的图片命名）
+const products = [
+{ id:'XT-042', name:'茶滤', img:'IMG_2829.jpeg', desc:'不锈钢茶滤 · 精细过滤', dims:'64×52×100×40 mm' },
+{ id:'XT-043', name:'咖啡滤筒', img:'IMG_2830.jpeg', desc:'咖啡滤筒 · 圆柱设计', dims:'99×78×128×79 mm' },
+{ id:'XT-036', name:'口径90胀型滤筒', img:'IMG_2827.jpeg', desc:'胀型滤筒 · 90mm口径', dims:'90×170×55 mm' },
+{ id:'XT-034', name:'双耳折叠漏斗', img:'IMG_2825.jpeg', desc:'口径63 · 折叠设计', dims:'129×66×73×13 mm' },
+{ id:'XT-030', name:'口径81席型滤筒', img:'IMG_2822.jpeg', desc:'席型滤网 · 81mm口径', dims:'81×66×210×66 mm' },
+{ id:'XT-026', name:'弯把手单层漏斗', img:'IMG_2818.jpeg', desc:'78mm口径 · 弯把手', dims:'99×78×69×56×8 mm' },
+{ id:'XT-024', name:'单把手底盘款', img:'IMG_2816.jpeg', desc:'100mm口径 · 带底盘', dims:'100×90×74×105 mm' },
+{ id:'XT-015', name:'118口径大底漏斗', img:'IMG_2809.jpeg', desc:'大底设计 · 118mm口径', dims:'138×118×100×84×46 mm' },
+{ id:'XT-016', name:'88口径底盘款', img:'IMG_2808.jpeg', desc:'88mm口径 · 带底盘', dims:'110×88×72×110×90 mm' },
+{ id:'XT-013', name:'102底盘款', img:'IMG_2805.jpeg', desc:'102mm口径 · 咖啡滤杯', dims:'124×102×83×65×89 mm' },
+{ id:'XT-011', name:'115大底支架款', img:'IMG_2801.jpeg', desc:'115mm口径 · 支架设计', dims:'132×115×85×100 mm' }
+];
+
+// 渲染产品卡片
+const grid = document.getElementById('productGrid');
+
+products.forEach(p => {
+const card = document.createElement('div');
+card.className = 'product-card';
+card.innerHTML = `
+<img src="${p.img}" alt="${p.id}" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect fill=%22%23eee%22 width=%22200%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23999%22 font-size=%2218%22%3E${p.id}%3C/text%3E%3C/svg%3E'">
+<div class="product-info">
+<div class="model">${p.id}</div>
+<h3>${p.name}</h3>
+<div class="desc">${p.desc}</div>
+<div class="dimensions">📐 ${p.dims}</div>
+</div>
+`;
+card.addEventListener('click', () => openModal(p));
+grid.appendChild(card);
+});
+
+// 弹窗
+const modal = document.getElementById('modal');
+const modalBody = document.getElementById('modalBody');
+const modalClose = document.getElementById('modalClose');
+
+function openModal(p) {
+modalBody.innerHTML = `
+<img src="${p.img}" alt="${p.id}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect fill=%22%23eee%22 width=%22300%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23999%22 font-size=%2220%22%3E${p.id}%3C/text%3E%3C/svg%3E'">
+<div class="info">
+<h2>${p.id} · ${p.name}</h2>
+<div class="model">${p.desc}</div>
+<div class="dims">
+<strong>尺寸 / Dimensions</strong><br>
+<span>${p.dims.replace(/×/g,' × ')}</span>
+</div>
+</div>
+`;
+modal.classList.add('show');
+document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+modal.classList.remove('show');
+document.body.style.overflow = 'auto';
+}
+
+modalClose.addEventListener('click', closeModal);
+modal.addEventListener('click', (e) => { if(e.target === modal) closeModal(); });
+document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeModal(); });
+</script>
 
 </body>
 </html>
